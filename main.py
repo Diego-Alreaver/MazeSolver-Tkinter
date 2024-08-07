@@ -3,33 +3,33 @@ from window import Window, Point, Line, Cell
 
 
 def main():
-    # Crear una ventana
-    window = Window(800, 600)
+    win = Window(800, 600)
 
-    # Crear algunos puntos y líneas
-    p1 = Point(100, 200)
-    p2 = Point(300, 400)
-    p3 = Point(500, 600)
-    p4 = Point(300, 200)
+    c1 = Cell(win)
+    c1.has_right_wall = False
+    c1.draw(50, 50, 100, 100)
 
-    line1 = Line(p1, p2)
-    line2 = Line(p3, p4)
+    c2 = Cell(win)
+    c2.has_left_wall = False
+    c2.has_bottom_wall = False
+    c2.draw(100, 50, 150, 100)
 
-    # Crear y dibujar las celdas
-    cell1 = Cell(50, 50, 100, 100, window)
-    cell1.draw()
-    cell2 = Cell(100, 50, 150, 100, window)
-    cell2.draw()
-    
-    # Dibujar el movimiento entre las celdas
-    cell1.draw_move(cell2)
+    c1.draw_move(c2)
 
-    # Dibujar líneas en la ventana
-    window.draw_line(line1, "black")
-    window.draw_line(line2, "red")
+    c3 = Cell(win)
+    c3.has_top_wall = False
+    c3.has_right_wall = False
+    c3.draw(100, 100, 150, 150)
+
+    c2.draw_move(c3)
+
+    c4 = Cell(win)
+    c4.has_left_wall = False
+    c4.draw(150, 100, 200, 150)
+
+    c3.draw_move(c4, True)
+
+    win.wait_for_close()
 
 
-    # Esperar a que se cierre la ventana
-    window.wait_for_close()
-if __name__ == "__main__":
-    main()
+main()
