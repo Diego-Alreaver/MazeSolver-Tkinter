@@ -42,7 +42,7 @@ class Line:
         self.p1 = p1
         self.p2 = p2
 
-    def draw(self, canvas, fill_color):
+    def draw(self, canvas, fill_color = "black"):
         canvas.create_line(
             self.p1.x, self.p1.y, 
             self.p2.x, self.p2.y, 
@@ -70,4 +70,16 @@ class Cell:
             self._win.canvas.create_line(self._x1, self._y1, self._x2, self._y1)
         if self.has_bottom_wall:
             self._win.canvas.create_line(self._x1, self._y2, self._x2, self._y2)
+
+    def draw_move(self, to_cell, undo = False):
+        x1,y1 = self.calcularmedio()
+        x2,y2 = to_cell.calcularmedio()
+        color = "red" if not undo else "gray"
+        line = Line(Point(x1, y1), Point(x2, y2))
+        self._win.draw_line(line, color)
+
+    def calcularmedio(self):
+        medioX = (self._x1 + self._x2) / 2
+        medioY = (self._y1 + self._y2) / 2
+        return medioX, medioY
 
