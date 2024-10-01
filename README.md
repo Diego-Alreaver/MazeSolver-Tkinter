@@ -13,3 +13,5 @@ This project implements a Maze Solver using Python and the Tkinter library for g
 - Recursive algorithms for maze generation and solving
 
 This project is a simple yet powerful example of maze generation and pathfinding, showcasing the use of recursion and graphical representation with Python.
+
+![image](https://github.com/user-attachments/assets/db65e27d-bce2-4ef8-81cd-a34f09a74700)
